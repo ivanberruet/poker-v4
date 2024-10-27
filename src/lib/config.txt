@@ -1,0 +1,37 @@
+settings = {
+  players : {
+          dbPlayers: [], 
+          availablePlayers: [], 
+          registeredPlayers: {
+            activePlayers: [], 
+            eliminatedPlayers: []
+          } 
+        }, 
+        money: {}, 
+        time: {}, 
+        chips: {},
+        game: {},
+        isLoading: true,
+}
+
+dbPlayers = {id, name, nick}
+availablePlayers = {id, name, nick}
+activePlayers = {
+  id,
+  name,
+  nick,
+  reentry,  
+  reentryTime,
+}
+activePlayers = {
+  id,
+  name,
+  nick,
+  reentry,  
+  reentryTime,
+  eliminatedTime,
+  inGameTime,
+  prize,
+  date,
+  startTime
+}
