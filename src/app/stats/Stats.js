@@ -35,8 +35,8 @@ export default async function Stats() {
                 <TabsTrigger value="Players" className="px-2 py-1 rounded-lg data-[state=inactive]:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow">Jugadores</TabsTrigger>
             </TabsList>
 
-            {/* <TabsContent value="Attendances"><Attendances history={history} /></TabsContent>
-            <TabsContent value="History"><History history={history} /></TabsContent>
+            <TabsContent value="Attendances"><Attendances history={history} /></TabsContent>
+            {/* <TabsContent value="History"><History history={history} /></TabsContent>
             <TabsContent value="Podiums"><Podiums history={history} /></TabsContent>
             <TabsContent value="Players"><Players history={history} /></TabsContent> */}
             
