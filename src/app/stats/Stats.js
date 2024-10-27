@@ -4,15 +4,21 @@ import History from "@/components/stats/history/History"
 import Players from "@/components/stats/players/Players"
 import Podiums from "@/components/stats/podiums/Podiums"
 
-async function getHistory(){
+async function getHistory() {
     try {
-        let res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/history`)
-        let data = await res.json()
-        
-        return data
-    } catch (error) {
-        console.log(error)
+      let res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/history`);
+  
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error("Fetch failed:", errorText);
+        throw new Error("Failed to fetch history data");
       }
+  
+      let data = await res.json();
+      return data;
+    } catch (error) {
+      console.log("Fetch error:", error.message);
+    }
 }
 
 export default async function Stats() {
