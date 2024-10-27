@@ -38,7 +38,7 @@ export default async function Stats() {
             <TabsContent value="Attendances"><Attendances history={history} /></TabsContent>
             <TabsContent value="History"><History history={history} /></TabsContent>
             <TabsContent value="Podiums"><Podiums history={history} /></TabsContent>
-            {/* <TabsContent value="Players"><Players history={history} /></TabsContent> */}
+            <TabsContent value="Players"><Players history={history} /></TabsContent>
             
         </Tabs>    
     </div>
