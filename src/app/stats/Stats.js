@@ -23,9 +23,7 @@ async function getHistory() {
 
 export default async function Stats() {
   
-    // const [ history ] = await Promise.all([
-    //     getHistory(),
-    // ])
+    const history = await getHistory()
 
   return (
     <div className="w-full flex flex-col gap-4 p-6 sm:py-10">

@@ -6,9 +6,9 @@ export default function page() {
 
   return (
     <section className="w-full h-full flex-col">
-      {/* <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
         <Stats />  
-      </Suspense>   */}
+      </Suspense>  
     </section>
   )
 }
