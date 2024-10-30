@@ -1,5 +1,5 @@
 'use client'
-import React, { act } from 'react'
+import React from 'react'
 import { useAppContext } from '@/context';
 import { Button } from "@/components/ui/button"
 import {
@@ -111,7 +111,6 @@ export function TableActions({playerID}) {
           isPaused: false
         }
       ))
-      router.push("/")
     } 
   }
 
