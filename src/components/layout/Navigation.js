@@ -7,7 +7,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui//sheet";
 import { usePathname } from "next/navigation";
 import DesktopLink from "./DesktopLink";
 import MobileLink from "./MobileLink";
-import { testAPI } from "@/lib/testAPI";
 
 export default function Navigation({ children }) {
 

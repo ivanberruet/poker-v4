@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default function Blinds({level, status, structure}) {
-  let smallBlind = structure[level].smallBlind
-  let bigBlind = structure[level].bigBlind
+  let smallBlind = structure[level]?.smallBlind || 0
+  let bigBlind = structure[level]?.bigBlind || 0
   return (
     <div className={`h-fit flex-1 flex flex-col gap-2 justify-start ${status=="current" ? "" : "lg:text-right opacity-20" }`}>
       <div className={`flex lg:flex-col items-center lg:justify-start w-full font-semibold ${status=="current" ? "lg:items-start" : "lg:items-end"}`}>
