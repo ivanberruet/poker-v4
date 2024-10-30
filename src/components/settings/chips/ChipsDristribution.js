@@ -24,12 +24,12 @@ export default function ChipsDristribution() {
         {settings.chips.distribution.map((box) => (
           <TableRow key={box.label} className="h-[50px]">
             <TableCell>{box.label}</TableCell>
-            <TableCell>{box.white.quantity}</TableCell>
-            <TableCell>{box.red.quantity}</TableCell>
-            <TableCell>{box.green.quantity}</TableCell>
-            <TableCell>{box.blue.quantity}</TableCell>
-            <TableCell>{box.black.quantity}</TableCell>
-            <TableCell>{Intl.NumberFormat('es').format(box.value)}</TableCell>
+            <TableCell>{Intl.NumberFormat('es-AR').format(box.white.quantity)}</TableCell>
+            <TableCell>{Intl.NumberFormat('es-AR').format(box.red.quantity)}</TableCell>
+            <TableCell>{Intl.NumberFormat('es-AR').format(box.green.quantity)}</TableCell>
+            <TableCell>{Intl.NumberFormat('es-AR').format(box.blue.quantity)}</TableCell>
+            <TableCell>{Intl.NumberFormat('es-AR').format(box.black.quantity)}</TableCell>
+            <TableCell>{Intl.NumberFormat('es-AR').format(box.value)}</TableCell>
           </TableRow>
         ))}
       </TableBody>

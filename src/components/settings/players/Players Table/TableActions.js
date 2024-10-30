@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { act } from 'react'
 import { useAppContext } from '@/context';
 import { Button } from "@/components/ui/button"
 import {
@@ -13,17 +13,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { DotsHorizontalIcon, TrashIcon } from '@radix-ui/react-icons';
+import { useRouter } from 'next/navigation';
 
 export function TableActions({playerID}) {
-  const {settings, setSettings} = useAppContext();
-  
+  const {settings, setSettings, setGame} = useAppContext();
+  const router = useRouter();
+
   const handleReentry = () => {
     const playerObj = settings.players.registeredPlayers.activePlayers.find(p => p.id === playerID)
 
     const updatedPlayerObj = {
       ...playerObj, 
       reentry: !playerObj.reentry, 
-      reentryTime: !playerObj.reentry ? new Date().toLocaleTimeString([],{hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false}) : ''
+      reentryTime: !playerObj.reentry ? new Date().toLocaleTimeString([],{hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false}) : null
     }
 
     console.log("updatedPlayerObj", updatedPlayerObj );
@@ -69,27 +71,50 @@ export function TableActions({playerID}) {
     const activePlayersCount = settings.players.registeredPlayers.activePlayers.length
     const eliminatedPlayersCount = settings.players.registeredPlayers.eliminatedPlayers.length
     const registeredPlayersCount = activePlayersCount + eliminatedPlayersCount
-    setSettings(prevSettings => (
+    const activePlayers = settings.players.registeredPlayers.activePlayers.filter(p => p.id !== playerID)
+    const percentages = settings.money.prizes.winners<3 ? settings.money.prizes.percentages : settings.money.prizes.percentages.map(p => p-5)
+
+    setSettings(prevSettings => {
+      let position = registeredPlayersCount-eliminatedPlayersCount
+      let prize  = position <= settings.money.prizes.winners ? percentages[position-1]*settings.money.prizes.pool/100 : 0  
+      return (
       {...prevSettings,
         players: {
           ...prevSettings.players,
           registeredPlayers: {
             ...prevSettings.players.registeredPlayers,
-            activePlayers: prevSettings.players.registeredPlayers.activePlayers.filter(p => p.id !== playerID),
+            activePlayers: activePlayersCount == 2 ? [{...activePlayers[0], position: 1, prize: percentages[0]*settings.money.prizes.pool/100}] : activePlayers,
             eliminatedPlayers: [
               {
                 ...playerObj,
-                position: registeredPlayersCount-eliminatedPlayersCount,
-                eliminatedTime: new Date().toLocaleTimeString([],{hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false})
+                position: position,
+                eliminatedTime: new Date().toLocaleTimeString([],{hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false}),
+                prize: prize
               }, 
-              ...prevSettings.players.registeredPlayers.eliminatedPlayers]
+              ...prevSettings.players.registeredPlayers.eliminatedPlayers
+            ]
           }
         }
       }
-    ))
+    )})
+    // Endgame
+    if (activePlayersCount == 2) {
+      setGame(prevGame => (
+        {...prevGame,
+          endTime: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+          }),
+          isStarted: false,
+          isPaused: false
+        }
+      ))
+      router.push("/")
+    } 
   }
 
-  const nick = settings.players.registeredPlayers.activePlayers.find(p => p.id === playerID).nick
   const reentry = settings.players.registeredPlayers.activePlayers.find(p => p.id === playerID).reentry
 
   return (

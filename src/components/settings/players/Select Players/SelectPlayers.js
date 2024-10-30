@@ -25,7 +25,15 @@ export default function SelectPlayers() {
           availablePlayers: filteredAvailablePlayers, 
           registeredPlayers: {
             ...prevSettings.players.registeredPlayers,
-            activePlayers: [...prevSettings.players.registeredPlayers.activePlayers, ...selectedPlayers.map(p => ({id: p.id, name: p.name, nick: p.nick, reentry: false, position: ''}))],
+            activePlayers: [...prevSettings.players.registeredPlayers.activePlayers, ...selectedPlayers.map(p => ({
+              id: p.id, 
+              name: p.name, 
+              nick: p.nick, 
+              reentry: false,
+              reentryTime: null,
+              position: null,
+              eliminatedTime: null,
+            }))],
           }
         },
       }

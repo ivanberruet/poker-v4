@@ -2,9 +2,10 @@
 import React, { useEffect } from 'react'
 import { getPlayerStatistics } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card'
+import { useAppContext } from '@/context';
 
-export default function Players({history}) {
-
+export default function Players() {
+  const {history} = useAppContext()
   const STATS = getPlayerStatistics(history)
   
   const handleChange = (value) => {

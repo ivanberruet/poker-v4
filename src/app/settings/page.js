@@ -11,7 +11,6 @@ import handleChipsTobeUsed from '@/lib/handleChipsTobeUsed'
 
 export default function Settings() {
   const {settings, setSettings } = useAppContext();
-  console.log("settings", settings);
   const activePlayersCount = settings.players.registeredPlayers.activePlayers.length
   const eliminatedPlayersCount = settings.players.registeredPlayers.eliminatedPlayers.length
   const reentryPlayersCount = settings.players.registeredPlayers.reentryPlayers.length
@@ -35,7 +34,6 @@ export default function Settings() {
   const availableChips = settings.chips.available
 
   useEffect(() => {
-    console.log(handleChipsTobeUsed(settings.chips, settings.players.registeredPlayers));
     setSettings(prevSettings => (
       {...prevSettings,
         chips: {

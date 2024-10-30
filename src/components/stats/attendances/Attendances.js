@@ -1,14 +1,15 @@
 "use client"
-
 import { aggregateHistoryByDate, getPlayersStats } from "@/lib/utils";
 import { Chart } from "chart.js/auto";
 import { useEffect, useRef } from "react";
 import AttendacesChart from "./Chart";
 import YearlyStats from "./YearlyStats";
+import { useAppContext } from "@/context";
 
 
-export default function Attendances({history}) {
-    
+export default function Attendances() {
+    const {history} = useAppContext()
+
     const chartRef = useRef(null)
 
     useEffect(() => {

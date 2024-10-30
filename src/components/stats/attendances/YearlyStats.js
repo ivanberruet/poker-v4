@@ -1,5 +1,3 @@
-"use client"
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { aggregateHistoryByDate, getYearlyStats } from "@/lib/utils";
@@ -8,9 +6,6 @@ export default function YearlyStats({history}) {
    
     const dataset = aggregateHistoryByDate(history);
     const yealyStats = getYearlyStats(dataset);
-
-    // logs
-    // console.log("yealyStats", yealyStats);
     
 
   return (

@@ -5,6 +5,8 @@ import { useAppContext } from '@/context'
 
 export default function Winners() {
   const {settings, setSettings} = useAppContext()
+  const winners = settings.money.prizes.winners
+  
 
   const handleChange = (value) => {
     setSettings({
@@ -22,7 +24,7 @@ export default function Winners() {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label>Cantidad de ganadores</Label>
-      <Select defaultValue={2} onValueChange={(value)=>handleChange(value)}>
+      <Select defaultValue={winners} onValueChange={(value)=>handleChange(value)}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Ganadores" />
         </SelectTrigger>

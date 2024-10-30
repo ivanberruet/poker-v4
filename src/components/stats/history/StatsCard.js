@@ -1,7 +1,13 @@
-import { Card, CardContent } from '@/components/ui/card'
+'use client'
 import React from 'react'
+import { Card, CardContent } from '@/components/ui/card'
+import { useAppContext } from '@/context';
+import { calculateTournamentsStats, getHistoryTableData } from '@/lib/utils';
 
-export default function StatsCard({stats}) {
+export default function StatsCard() {
+    const {history} = useAppContext()
+    const stats = calculateTournamentsStats(getHistoryTableData(history));
+
     console.log("stats", stats);
     
   return (

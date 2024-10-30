@@ -5,8 +5,13 @@ import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/compo
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button";
-  
-export function DataTable({ columns, data }) {
+import { useAppContext } from "@/context"
+import { getHistoryTableData } from "@/lib/utils";
+import { columns } from './columns'
+
+export function DataTable() {
+    const {history} = useAppContext()
+    const data = getHistoryTableData(history)
     const [columnFilters, setColumnFilters] = useState([]);
     const [columnVisibility, setColumnVisibility] = useState({date: true,position: true,player: true,length: true,start: false, end: false });
     const [pagination, setPagination] = useState({

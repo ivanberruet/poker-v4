@@ -1,8 +1,6 @@
 export default 	function handleChipsTobeUsed(chips, players) {
 	let activeChips = chips.available.filter(chip => chip.active)
 	let players_num = 2*(players.activePlayers.length + players.eliminatedPlayers.length)
-	console.log("activeChips",activeChips);
-	console.log("players_num",players_num);
 	
 	let totalChips = {
 		label: "Total",
@@ -51,11 +49,6 @@ export default 	function handleChipsTobeUsed(chips, players) {
 
 		}
 		totalChips.value = totalChips.white.value + totalChips.red.value + totalChips.green.value + totalChips.blue.value + totalChips.black.value
-		console.log("totalChips.white.quantity",totalChips.white.quantity);
-
-		// console.log("totalChips.white.quantity",totalChips.white.quantity);
-		// console.log("totalChips.white.quantity / players_num)",totalChips.white.quantity / players_num);
-		// console.log("perPlayerChips.white.quantity)",Math.floor(totalChips.white.quantity / players_num));
 
 		perPlayerChips = {...perPlayerChips,
 			white: {quantity: Math.floor(totalChips.white.quantity / players_num), value: Math.floor(totalChips.white.quantity / players_num) * 5},

@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui//sheet";
 import { usePathname } from "next/navigation";
 import DesktopLink from "./DesktopLink";
 import MobileLink from "./MobileLink";
+import { testAPI } from "@/lib/testAPI";
 
 export default function Navigation({ children }) {
 
@@ -18,7 +19,7 @@ export default function Navigation({ children }) {
       {/* Desktop */}
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r border-muted bg-background sm:flex">
         <nav className="flex flex-col items-center gap-4 px-2 sm:py-4">
-          <Image src="/logo.png" alt="Logo" width={25} height={25} className="hidden sm:block"></Image>
+          <Image src="/logo.png" alt="Logo" width={25} height={25} className="hidden sm:block "></Image>
 
           <DesktopLink href="/" icon={<Home className="h-5 w-5" />} text="Inicio" className={pathName === "/" ? "bg-accent text-foreground " : "text-muted-foreground"} />
 

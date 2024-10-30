@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
-import TestComponent from "@/components/TestComponent";
 import { AppWrapper } from "@/context";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
             {children}  
           </AppWrapper>
         </Navigation>
+        <Toaster />
         </body>
     </html>
   );

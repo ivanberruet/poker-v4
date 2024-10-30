@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { useAppContext } from '@/context'
 
 export default function InitialLevel() {
-  const {settings, setSettings} = useAppContext()
+  const {settings, setSettings, setGame} = useAppContext()
   
   const initialLevel = settings.time.initialLevel
 
@@ -21,6 +21,10 @@ export default function InitialLevel() {
         initialLevel: value
       }
     })
+    setGame((prevGame) => ({
+      ...prevGame,
+      level: value
+    }))
   }
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">

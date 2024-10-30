@@ -11,9 +11,6 @@ export default function Rules() {
 
   let options = Array.from({ length: prizes.winners }, (_, i) => i + 1);
 
-  console.log("winners", prizes.winners);
-  
-
   return (
     <div className='flex flex-col py-6 gap-6'>
         <div className='w-full underline underline-offset-4 lg:text-3xl'>Información del torneo</div>

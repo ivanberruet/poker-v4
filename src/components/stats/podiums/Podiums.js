@@ -2,8 +2,10 @@
 import React from 'react'
 import { formatPodiums } from '@/lib/utils';
 import Table from './Table';
+import { useAppContext } from '@/context';
 
-export default function Podiums({history}) {
+export default function Podiums() {
+  const {history} = useAppContext()
 
   const PODIUMS = formatPodiums(history.filter((row) => row.position <= 3))
 	const players = {};
