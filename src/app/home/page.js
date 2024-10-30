@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Time from '@/components/home/Time';
 import Info from '@/components/home/Info';
 import Money from '@/components/home/Money';
